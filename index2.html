@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Automation | Build. Automate. Grow.</title>
+    <meta name="description" content="Neural Automation builds intelligent digital systems, websites, applications, AI/ML solutions, automation systems and digital growth solutions for modern businesses.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Neural Automation | Build. Automate. Grow.">
+    <meta property="og:description" content="Intelligent digital solutions for modern businesses.">
+    <meta property="og:type" content="website">
+    
+    <style>
+        /* =========================================
+           VARIABLES & SETUP
+        ========================================= */
+        :root {
+            --bg-dark: #050505;
+            --bg-card: #0a0a0a;
+            --bg-card-hover: #111111;
+            --accent-red: #d32f2f;
+            --accent-red-hover: #b71c1c;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            font-size: 16px; /* Strict 16px minimum for mobile body */
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================================
+           TYPOGRAPHY
+        ========================================= */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 1.5rem; /* Better mobile sizing */
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+        }
+
+        .text-red {
+            color: var(--accent-red);
+        }
+
+        .mb-large { margin-bottom: 2rem; }
+        .mt-large { margin-top: 3rem; }
+        .mt-small { margin-top: 1rem; }
+
+        .center-text { text-align: center; }
+
+        /* =========================================
+           LAYOUT & CONTAINERS
+        ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem; /* Slightly tighter on mobile to maximize space */
+        }
+
+        .section-padding {
+            padding: 3.5rem 0; /* Reduced from 4rem for better mobile flow */
+        }
+
+        /* Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem; /* Tighter gap on mobile */
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px; /* Strict minimum touch target */
+            padding: 0 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-align: center;
+            width: 100%; /* Full width by default on mobile */
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: #fff;
+            border: 2px solid var(--accent-red);
+        }
+
+        .btn-primary:hover, .btn-primary:active {
+            background-color: var(--accent-red-hover);
+            border-color: var(--accent-red-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid var(--accent-red);
+        }
+
+        .btn-secondary:hover, .btn-secondary:active {
+            background-color: rgba(211, 47, 47, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        /* =========================================
+           HEADER & NAVIGATION (PURE CSS)
+        ========================================= */
+        .site-header {
+            background-color: var(--bg-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            max-height: 48px; /* Increased to make na.jpeg text readable */
+            width: auto;
+            border-radius: 4px; /* Smooths corners if image background differs slightly */
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-toggle-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 48px;
+            min-height: 48px; /* 48px touch target */
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            position: relative;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            left: 0;
+        }
+
+        .hamburger::before { top: -8px; }
+        .hamburger::after { top: 8px; }
+
+        .main-nav {
+            display: none;
+            width: 100%;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            min-height: 48px; /* 48px touch target for nav links */
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:active {
+            color: var(--accent-red);
+        }
+
+        /* Toggle Logic */
+        .nav-toggle:checked ~ .main-nav {
+            display: block;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+        .hero {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            text-align: center; /* Centered on mobile for better balance */
+        }
+        
+        .hero-logo {
+            max-width: 120px; /* Strong brand presence on mobile */
+            margin: 0 auto 1.5rem auto;
+            border-radius: 8px;
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           CARDS COMMON
+        ========================================= */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem; /* Slightly reduced padding for mobile */
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #333;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           SERVICES
+        ========================================= */
+        .service-card {
+            border-bottom: 3px solid var(--accent-red);
+        }
+
+        .card-number {
+            display: inline-block;
+            font-size: 0.875rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        /* =========================================
+           PACKAGES
+        ========================================= */
+        .divider {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        .enterprise-card {
+            border: 1px solid var(--border-color);
+            background: #080808;
+        }
+
+        .enterprise-card .card-text {
+            margin-bottom: 2rem;
+        }
+
+        /* =========================================
+           RESULTS
+        ========================================= */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            text-align: center; /* Center stats on mobile */
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .flow-chart {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .flow-step {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+        }
+
+        .flow-arrow {
+            color: var(--accent-red);
+            font-size: 1.5rem;
+            margin: 0.25rem 0;
+        }
+
+        .highlight-step {
+            color: var(--accent-red);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* =========================================
+           PROCESS
+        ========================================= */
+        .process-timeline {
+            border-left: 2px solid var(--accent-red);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: -1.85rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-red);
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-text {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           FOUNDER & CERTIFICATIONS
+        ========================================= */
+        .founder-name {
+            font-size: 1.5rem;
+            color: var(--accent-red);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .founder-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .cert-card {
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        /* =========================================
+           BRAND PHILOSOPHY
+        ========================================= */
+        .philosophy {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .philosophy-quote {
+            font-size: 1.25rem; /* Better fit for narrow screens */
+            font-weight: 700;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           CONTACT
+        ========================================= */
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .contact-value {
+            font-size: 1.125rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .contact-buttons {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        .site-footer {
+            background-color: #000;
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+            text-align: center; /* Center align on mobile */
+        }
+
+        .footer-brand {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo-img {
+            max-width: 100px;
+            margin: 0 auto 1rem auto;
+            border-radius: 4px;
+        }
+
+        .footer-logo {
+            font-size: 1.125rem;
+            color: var(--accent-red);
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            font-size: 0.875rem;
+            color: #fff;
+            font-weight: 600;
+            min-height: 48px; /* 48px touch target */
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a1a1a;
+            text-align: left;
+        }
+
+        .footer-nav a {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            min-height: 48px; /* 48px touch target */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-bottom {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .footer-credit {
+            margin-top: 0.5rem;
+            color: #444;
+        }
+
+        /* =========================================
+           MEDIA QUERIES (TABLET)
+        ========================================= */
+        @media (min-width: 768px) {
+            /* Layout */
+            .section-title { font-size: 1.75rem; }
+            .section-padding { padding: 4.5rem 0; }
+            
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            
+            .hero { text-align: left; }
+            .hero-logo { margin: 0 0 1.5rem 0; }
+            
+            .stats-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                text-align: left;
+            }
+            .philosophy { text-align: left; }
+            
+            .btn { width: auto; }
+            .button-group {
+                flex-direction: row;
+            }
+            
+            /* Nav */
+            .nav-toggle-label { display: none; }
+            
+            .main-nav {
+                display: flex;
+                width: auto;
+                padding: 0;
+                border: none;
+            }
+            
+            .nav-links {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8125rem;
+            }
+            
+            /* Hero */
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.75rem; }
+
+            /* Footer */
+            .site-footer { text-align: left; }
+            .footer-logo-img { margin: 0 0 1rem 0; }
+            
+            .footer-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-social { 
+                margin-bottom: 0; 
+                justify-content: flex-start;
+            }
+            
+            .footer-nav {
+                display: flex;
+                gap: 2rem;
+            }
+            .footer-nav a { justify-content: flex-start; }
+        }
+
+        /* =========================================
+           MEDIA QUERIES (DESKTOP)
+        ========================================= */
+        @media (min-width: 1024px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+            .grid-2 { grid-template-columns: repeat(3, 1fr); }
+            
+            .hero-title { font-size: 4.5rem; }
+            .philosophy-quote { font-size: 2rem; }
+            
+            .contact-card {
+                max-width: 600px;
+            }
+            
+            .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+            }
+            .footer-credit { margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="#home" class="logo-link">
+                <!-- Using the exact verbatim filename provided -->
+                <img src="na.jpeg" alt="Neural Automation Logo" class="logo">
+            </a>
+            
+            <!-- Pure CSS Mobile Navigation -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span class="hamburger"></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#packages">PACKAGES</a></li>
+                    <li><a href="#results">RESULTS</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero section-padding">
+        <div class="container">
+            <!-- Included logo in hero for a stronger mobile-first brand impression -->
+            <img src="na.jpeg" alt="Neural Automation Logo" class="hero-logo">
+            <h1 class="hero-title">NEURAL AUTOMATION</h1>
+            <h2 class="hero-subtitle">BUILD. AUTOMATE. GROW.</h2>
+            <p class="hero-text">Intelligent digital solutions for modern businesses.</p>
+            <div class="button-group">
+                <a href="#contact" class="btn btn-primary">START A PROJECT</a>
+                <a href="#services" class="btn btn-secondary">VIEW SERVICES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title">ABOUT NEURAL AUTOMATION</h2>
+            <p class="section-text">Neural Automation engineers intelligent digital systems, high-performance web/mobile apps, AI/ML architectures, and autonomous growth systems.</p>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <h2 class="section-title">WHAT WE DO</h2>
+            <div class="grid">
+                <div class="card service-card">
+                    <span class="card-number">01</span>
+                    <h3 class="card-title">WEB & 3D EXPERIENCES</h3>
+                    <p class="card-text">Immersive websites and high-performance web applications.</p>
+                </div>
+                <div class="card service-card">
+                    <span class="card-number">02</span>
+                    <h3 class="card-title">MOBILE & WEB APPS</h3>
+                    <p class="card-text">Enterprise applications built for scale and real-world workflows.</p>
+                </div>
+                <div class="card service-card">
+                    <span class="card-number">03</span>
+                    <h3 class="card-title">AI / ML ARCHITECTURES</h3>
+                    <p class="card-text">Predictive models, neural networks and intelligent workflows.</p>
+                </div>
+                <div class="card service-card">
+                    <span class="card-number">04</span>
+                    <h3 class="card-title">DATA SCIENCE</h3>
+                    <p class="card-text">Analytics pipelines and operational data modelling for business intelligence.</p>
+                </div>
+                <div class="card service-card">
+                    <span class="card-number">05</span>
+                    <h3 class="card-title">AUTONOMOUS AUTOMATION</h3>
+                    <p class="card-text">Automation and intelligent pipeline orchestration to eliminate manual bottlenecks.</p>
+                </div>
+                <div class="card service-card">
+                    <span class="card-number">06</span>
+                    <h3 class="card-title">DIGITAL MARKETING / SMM</h3>
+                    <p class="card-text">Content scaling, social-media marketing and organic visibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="packages" class="packages section-padding">
+        <div class="container">
+            <h2 class="section-title">SCALABLE PACKAGES</h2>
+            <div class="grid">
+                
+                <div class="card package-card">
+                    <h3 class="card-title divider">DIGITAL MARKETING</h3>
+                    <p class="price">₹5,000 onwards</p>
+                    <ul class="feature-list">
+                        <li>Social Media Growth & Management</li>
+                        <li>Organic Content Strategy</li>
+                        <li>Brand Visibility Scaling</li>
+                        <li>Analytics & Progress Reports</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">GET STARTED</a>
+                </div>
+
+                <div class="card package-card">
+                    <h3 class="card-title divider">WEBSITE DEVELOPMENT</h3>
+                    <p class="price">₹5,000 onwards</p>
+                    <ul class="feature-list">
+                        <li>Custom 3D / UI / UX Design</li>
+                        <li>Responsive & Mobile Ready</li>
+                        <li>Performance-focused websites</li>
+                        <li>SEO Foundation</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">GET STARTED</a>
+                </div>
+
+                <div class="card package-card">
+                    <h3 class="card-title divider">APP DEVELOPMENT</h3>
+                    <p class="price">₹10,000 onwards</p>
+                    <ul class="feature-list">
+                        <li>iOS & Android</li>
+                        <li>Custom Database Architecture</li>
+                        <li>API Integrations</li>
+                        <li>Secure Authentication</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">GET STARTED</a>
+                </div>
+
+                <!-- Enterprise Placeholder -->
+                <div class="card package-card enterprise-card">
+                    <h3 class="card-title divider">ENTERPRISE & INDUSTRY</h3>
+                    <p class="card-text">Advanced solutions for businesses with complex requirements.</p>
+                    <a href="#contact" class="btn btn-secondary">CONTACT US</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section id="results" class="results section-padding">
+        <div class="container">
+            <h2 class="section-title">RESULTS THAT SPEAK LOUDER.</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">FOLLOWERS</span>
+                    <span class="stat-desc">From 0 in under 2 months</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3.5L+</span>
+                    <span class="stat-label">TOTAL VIEWS</span>
+                    <span class="stat-desc">Generated on dashboard</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">105K+</span>
+                    <span class="stat-label">VIEWS</span>
+                    <span class="stat-desc">On one viral video</span>
+                </div>
+            </div>
+
+            <div class="flow-chart">
+                <div class="flow-step">0 FOLLOWERS</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">CONTENT SYSTEM</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">CONSISTENCY</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">ORGANIC DISTRIBUTION</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step highlight-step">150+ FOLLOWERS UNDER 60 DAYS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section id="process" class="process section-padding">
+        <div class="container">
+            <h2 class="section-title">FROM CONCEPT TO DIGITAL SYSTEM</h2>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <h3 class="step-title">01 — DISCOVER</h3>
+                    <p class="step-text">Business objectives and market positioning.</p>
+                </div>
+                <div class="process-step">
+                    <h3 class="step-title">02 — STRATEGIZE</h3>
+                    <p class="step-text">Plan the digital system and workflows.</p>
+                </div>
+                <div class="process-step">
+                    <h3 class="step-title">03 — BUILD</h3>
+                    <p class="step-text">Engineer the solution.</p>
+                </div>
+                <div class="process-step">
+                    <h3 class="step-title">04 — OPTIMIZE</h3>
+                    <p class="step-text">Improve performance and reliability.</p>
+                </div>
+                <div class="process-step">
+                    <h3 class="step-title">05 — GROW</h3>
+                    <p class="step-text">Scale traffic, campaigns and automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER & CERTIFICATIONS -->
+    <section id="founder" class="founder-certs section-padding">
+        <div class="container">
+            <div class="founder-section">
+                <h2 class="section-title">MEET THE FOUNDER</h2>
+                <h3 class="founder-name">RAGHAV RASTOGI</h3>
+                <p class="founder-title">FOUNDER, NEURAL AUTOMATION</p>
+                <p class="founder-desc">Specializing in advanced digital systems, enterprise applications and growth strategies.</p>
+            </div>
+
+            <div class="certs-section">
+                <h2 class="section-title mt-large">CERTIFICATIONS</h2>
+                <div class="grid-2">
+                    <div class="card cert-card">
+                        <h3 class="card-title">GOOGLE</h3>
+                        <p class="card-text">Digital Marketing & E-commerce</p>
+                    </div>
+                    <div class="card cert-card">
+                        <h3 class="card-title">CETPA INSTITUTE</h3>
+                        <p class="card-text">AI / ML Certification Training</p>
+                    </div>
+                    <div class="card cert-card">
+                        <h3 class="card-title">IIT PATNA — VISHLESHAN HUB</h3>
+                        <p class="card-text">Agentic AI & Project Management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND PHILOSOPHY -->
+    <section class="philosophy section-padding">
+        <div class="container">
+            <blockquote class="philosophy-quote">
+                "WE DON'T JUST BUILD DIGITAL PRODUCTS.<br>
+                <span class="text-red">WE BUILD SYSTEMS THAT MOVE MARKETS FORWARD."</span>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta section-padding">
+        <div class="container center-text">
+            <h2 class="section-title">READY TO BUILD WHAT'S NEXT?</h2>
+            <p class="section-text mb-large">Tell us what you want to build, automate or grow.</p>
+            <div class="button-group center-flex">
+                <a href="#contact" class="btn btn-primary">START A PROJECT</a>
+                <a href="#contact" class="btn btn-secondary">CONTACT US</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title">LET'S BUILD WHAT'S NEXT.</h2>
+            <div class="contact-card card">
+                <h3 class="founder-name">RAGHAV RASTOGI</h3>
+                <p class="founder-title">Founder, Neural Automation</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-label">WHATSAPP</span>
+                        <p class="contact-value">+91 7042145705</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">EMAIL</span>
+                        <p class="contact-value">Neural.automation.2009@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-buttons">
+                    <a href="https://wa.me/917042145705" target="_blank" rel="noopener noreferrer" class="btn btn-primary">CHAT ON WHATSAPP</a>
+                    <a href="mailto:Neural.automation.2009@gmail.com" class="btn btn-secondary mt-small">SEND EMAIL</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="na.jpeg" alt="Neural Automation Logo" class="footer-logo-img">
+                    <h3 class="footer-logo">NEURAL AUTOMATION</h3>
+                    <p class="footer-tagline">AI • 3D WEBGL • DIGITAL GROWTH</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" target="_blank" class="social-link">Instagram</a>
+                    <a href="#" target="_blank" class="social-link">Facebook</a>
+                    <a href="#" target="_blank" class="social-link">YouTube</a>
+                </div>
+            </div>
+
+            <nav class="footer-nav">
+                <a href="#home">HOME</a>
+                <a href="#services">SERVICES</a>
+                <a href="#packages">PACKAGES</a>
+                <a href="#results">RESULTS</a>
+                <a href="#about">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Neural Automation. All rights reserved.</p>
+                <p class="footer-credit">CREDIT TO DEEKSHA MOHAN RASTOGI</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
